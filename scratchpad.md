@@ -6,7 +6,7 @@ Working on a structure to represent FE entities.
 3. System definitions
 Any model must be digested to yield at least these three entities. Note that Boundary Connditions and Loading are not part of this list. This is because a model may be subjected to various BCs and LCs. The meaning of the mesh remains the same.
 
-## A generic data object - SET
+## A generic data object - SET.
 A set can be a Grid or an Element set. The set has to be kept as close to Python native set as possible to take advantage of various operations. There has to be metadata associated with each set - What kind of set is it? Is the set used to define property of the elements?
 
 There maybe other entities that will require a pointer to a set. For example, a surface definition, an edge definition, a BC definition or and LC definition.
@@ -15,3 +15,9 @@ There maybe other entities that will require a pointer to a set. For example, a 
 A grid is an entry in 3D. It can be represented by a vector.
 However, most grids can have the definitions dependent on a different system. This could be something like a `*SYSTEM` on Abaqus or `CID` in Nastran.
 The object as such must have a system object as reference.
+
+## Property as a part of Element.
+Nastran elements allow the definition of properties as a part of the element itself. Abaqus doesn't allow that. What can be a common architecture for the storage of such entities?
+
+## Instancing.
+How should the model handle instancing of various parts. These concepts are there in solvers like Abaqus but absent in Nastran.
