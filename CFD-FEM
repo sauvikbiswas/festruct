@@ -1,0 +1,21 @@
+This file discusses the main simialirties and differences of CFD and FEM grids. 
+
+
+The main difference arises due to nature of problems. They both have nodes, cells, 
+faces, zones, Boundary conditions etc. Here is list:
+
+
+Simialrities:
+1. Nodes, Edges, Faces, Cells, Volumes
+2. Solver quantities are defined at cell center/vertex
+3. Coordinate systems, defined for conveneince. In CFD, this is only for boundary condition 
+ and wall motion, but not for cell definition.
+4. Material (solid/fluid) definition for every zone (set of connected cells)
+5. Internal Boundaries - flow, heat transfer, relative motion, friction etc are defined 
+  on such faces.
+
+
+Differences:
+
+1. Element definition in FEM problems are absent in CFD.
+2. Moving/highly resizing domain size in CFD.
