@@ -19,3 +19,49 @@ Differences:
 
 1. Element definition in FEM problems are absent in CFD.
 2. Moving/highly resizing domain size in CFD.
+
+
+So Moving On, we need to have following structure:
+
+
+<gridFile>
+<meta> File Version Number, total number of points, 
+ total numbers of faces, total numbers of cells 
+ number of Zones (materials and motions, like sheet/plate)
+</meta>
+ 
+<coords> Definition of coords and their location wrt global </coords>
+
+<points> 
+ <pt coords=coord_index> ptID, x,y,z </pt>
+ <pt coords=coord_index> ptID, x,y,z </pt>
+</points>
+
+<edges> 
+edgeID ptID1 ptID2 ifClosedEdge (like Circle, oval)..
+<method> zip two edges <method>
+<method> find if two edges touch or intersect (like in a T) <method>
+</edges>
+
+<faces> 
+faceID nEdges edgelist ifBoundaryFace cellNeighbours (c1 c2)
+<method> generate Point ID from edge IDs </method>
+</faces>
+
+<cells>
+<cell>
+ cellID, cellType, edges. faces, zoneID
+ <prop> material, interpolation, centroid <prop>
+ <method> generate pointIDs from face </method>
+ <method> get neighbour cells </method>
+<cell>
+<method>check if faces make Closed Volume </method>
+</cells>
+
+<BC>
+faceID, pressure, force, flow, torsion, temperature, coord_Index
+</BC>
+
+</gridFile>
+
+
